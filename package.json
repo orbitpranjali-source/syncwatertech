@@ -1,0 +1,16 @@
+{
+  "name": "syncwatertech-root",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "install-inner": "npm install --no-audit --no-fund --prefix syncwatertech-main",
+    "dev": "npm run dev --prefix syncwatertech-main",
+    "build": "npm run build --prefix syncwatertech-main",
+    "preview": "npm run preview --prefix syncwatertech-main",
+    "lint": "npm run lint --prefix syncwatertech-main",
+    "typecheck": "npm run typecheck --prefix syncwatertech-main",
+    "postinstall": "npm run install-inner"
+  }
+}
+
+
