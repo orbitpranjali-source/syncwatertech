@@ -14,32 +14,172 @@ export default function ProjectsPage({ initialFilter = 'all' }: ProjectsPageProp
   }, [initialFilter]);
 
   const completedProjects = [
-    { name: 'Kymore & Vijayraghavgarh (Package 5D) – MPUDCL Bhopal', value: '₹34.60 Lakh', year: '2024', location: 'Kymore & Vijayraghavgarh, MP', client: 'MPUDCL Bhopal' },
-    { name: 'Amarpatan & Ramnagar (Package 7D) – MPUDCL Bhopal', value: '₹1.37 Crore', year: '2024', location: 'Amarpatan & Ramnagar, MP', client: 'MPUDCL Bhopal' },
-    { name: 'Harpalpur & Badagaon (Package 6G) – MPUDCL Bhopal', value: '₹43.45 Lakh', year: '2024', location: 'Harpalpur & Badagaon, MP', client: 'MPUDCL Bhopal' },
-    { name: 'Bankhedi Turnkey Project – Central India Pvt Ltd', value: '₹27 Lakh', year: '2024', location: 'Bankhedi, MP', client: 'Central India Pvt Ltd' },
-    { name: 'KARI & Lidhorakhas Water Meter SITC – Tikamgarh Nagar Parishads', value: '₹85.80 Lakh', year: '2024', location: 'Tikamgarh, MP', client: 'Tikamgarh Nagar Parishads' },
-    { name: 'Gangadhar Meher Lift Irrigation Project – WRD Bhopal', value: '₹74.74 Lakh', year: '2024', location: 'Bhopal, MP', client: 'WRD Bhopal' },
+    { 
+      name: 'Kymore & Vijayraghavgarh (Package 5D)', 
+      value: '₹34.60 Lakh', 
+      year: '2024', 
+      location: 'Kymore & Vijayraghavgarh, MP', 
+      client: 'MPUDCL Bhopal',
+      description: 'Multi-village water supply scheme with PLC automation'
+    },
+    { 
+      name: 'Amarpatan & Ramnagar (Package 7D)', 
+      value: '₹1.37 Crore', 
+      year: '2024', 
+      location: 'Amarpatan & Ramnagar, MP', 
+      client: 'MPUDCL Bhopal',
+      description: 'Large-scale water distribution automation project'
+    },
+    { 
+      name: 'Harpalpur & Badagaon (Package 6G)', 
+      value: '₹43.45 Lakh', 
+      year: '2024', 
+      location: 'Harpalpur & Badagaon, MP', 
+      client: 'MPUDCL Bhopal',
+      description: 'Rural water supply automation with SCADA systems'
+    },
+    { 
+      name: 'Bankhedi Turnkey Project', 
+      value: '₹27 Lakh', 
+      year: '2024', 
+      location: 'Bankhedi, MP', 
+      client: 'Central India Pvt Ltd',
+      description: 'Complete turnkey automation solution'
+    },
+    { 
+      name: 'KARI & Lidhorakhas Water Meter SITC', 
+      value: '₹85.80 Lakh', 
+      year: '2024', 
+      location: 'Tikamgarh, MP', 
+      client: 'Tikamgarh Nagar Parishads',
+      description: 'Smart water metering and automation system'
+    },
+    { 
+      name: 'Gangadhar Meher Lift Irrigation Project', 
+      value: '₹74.74 Lakh', 
+      year: '2024', 
+      location: 'Bhopal, MP', 
+      client: 'WRD Bhopal',
+      description: 'Advanced lift irrigation automation system'
+    },
   ];
 
   const milestoneProjects = [
-    { name: 'Prism Cement, Satna', value: '₹4.50 Crore', year: '2015', location: 'Satna, MP', client: 'Prism Cement' },
-    { name: 'Lupin, Mandideep', value: '₹18 Lakh', year: '2016', location: 'Mandideep, MP', client: 'Lupin' },
-    { name: 'Vindhyachal Distillery, Pilukhedi', value: '₹2.50 Crore', year: '2017', location: 'Pilukhedi, MP', client: 'Vindhyachal Distillery' },
-    { name: 'Bhopal Municipal Corporation, Idgah Hills', value: '₹25 Lakh', year: '2018', location: 'Bhopal, MP', client: 'BMC' },
-    { name: 'MP Jal Nigam, Punjapura (Neemuch, Badhwani)', value: '₹28 Lakh', year: '2020', location: 'Neemuch, Badhwani, MP', client: 'MP Jal Nigam' },
-    { name: 'Indore District (Betma, Gautampura, Depalpur)', value: '₹12.68 Lakh', year: '2021', location: 'Indore District, MP', client: 'Indore District' },
-    { name: 'Betul-Bazar, Amla & Sarni Nagar Parishads (MP)', value: '₹13.19 Lakh', year: '2022', location: 'Betul, Amla, Sarni, MP', client: 'Nagar Parishads' },
-    { name: 'Gobranawapra STP (Raipur, C.G.)', value: '₹11.74 Lakh', year: '2023', location: 'Raipur, Chhattisgarh', client: 'Raipur Municipal Corporation' },
+    { 
+      name: 'Humidity & Temperature Control System', 
+      value: '₹4.50 Crore', 
+      year: '2015', 
+      location: 'Satna, MP', 
+      client: 'Prism Cement',
+      description: 'Delivered a humidity and temperature control turnkey automation system, redefining industrial climate regulation.'
+    },
+    { 
+      name: 'RO Plant Automation', 
+      value: '₹18 Lakh', 
+      year: '2016', 
+      location: 'Mandideep, MP', 
+      client: 'Lupin',
+      description: 'Executed a turnkey automation project for the reverse osmosis plant enhancing water purity assurance'
+    },
+    { 
+      name: '40 KL Turnkey Automation', 
+      value: '₹2.50 Crore', 
+      year: '2017', 
+      location: 'Pilukhedi, MP', 
+      client: 'Vindhayachal Distillery',
+      description: 'Commissioned a 40 KL turnkey automation project, optimising distillery operations with precision control'
+    },
+    { 
+      name: '3 MGD Water Treatment Plant', 
+      value: '₹25 Lakh', 
+      year: '2018', 
+      location: 'Bhopal, MP', 
+      client: 'Bhopal Municipal Corporation',
+      description: 'Implemented a 3 MGD water treatment plant with turnkey automation, raising municipal water reliability.'
+    },
+    { 
+      name: 'Turnkey Instrumentation', 
+      value: '₹28 Lakh', 
+      year: '2020', 
+      location: 'Neemuch, Badhwani, MP', 
+      client: 'MP Jal Nigam',
+      description: 'Completed a turnkey instrumentation project, strengthening regional water management capacity'
+    },
+    { 
+      name: 'Water Supply Scheme Automation', 
+      value: '₹12.68 Lakh', 
+      year: '2021', 
+      location: 'Indore District, MP', 
+      client: 'Indore District',
+      description: 'Delivered a fully integrated water supply scheme automation, enhancing service delivery accuracy'
+    },
+    { 
+      name: '45 MLD Turnkey Automation', 
+      value: '₹13.19 Lakh', 
+      year: '2022', 
+      location: 'Betul, Amla, Sarni, MP', 
+      client: 'Nagar Parishads',
+      description: 'Executed a 45 MLD turnkey automation project, significantly boosting urban water infrastructure'
+    },
+    { 
+      name: '7.6 MLD Sewage Treatment Plant', 
+      value: '₹11.74 Lakh', 
+      year: '2023', 
+      location: 'Raipur, Chhattisgarh', 
+      client: 'Raipur Municipal Corporation',
+      description: 'Commissioned a 7.6 MLD sewage treatment plant, advancing environmental compliance through turnkey instrumentation and automation.'
+    },
   ];
 
   const ongoingProjects = [
-    { name: 'Gandhisagar Package 2 – Multi-Village Project (District Neemach)', value: '₹10.87 Crore', expectedCompletion: 'Q2 2025', location: 'Neemach, MP', client: 'MP Jal Nigam - Dilip Buildcon' },
-    { name: 'Beohari Multi-Village Scheme – Shahdol', value: '₹1.49 Crore', expectedCompletion: 'Q3 2025', location: 'Shahdol, MP', client: 'MP Jal Nigam - Tejas Construction' },
-    { name: 'Rewa Bansagar Scheme – District Rewa', value: '₹14.24 Crore', expectedCompletion: 'Q4 2025', location: 'Rewa, MP', client: 'MP Jal Nigam - Dilip Buildcon' },
-    { name: 'Pahargarh Multi-Village Scheme – District Rajgarh', value: '₹27.54 Lakh', expectedCompletion: 'Q1 2025', location: 'Rajgarh, MP', client: 'MP Jal Nigam - KNK Projects' },
-    { name: 'Narmada Gambhir Multi-Village Scheme – District Ujjain', value: '₹10.34 Crore', expectedCompletion: 'Q3 2025', location: 'Ujjain, MP', client: 'MP Jal Nigam - Dilip Buildcon' },
-    { name: 'Gohad Water Supply Scheme – MPUDCL Bhopal', value: '₹50.04 Lakh', expectedCompletion: 'Q2 2025', location: 'Gohad, MP', client: 'MPUDCL Bhopal - Shree Contractor' },
+    { 
+      name: 'Gandhisagar Package 2', 
+      value: '₹10.87 Crore', 
+      expectedCompletion: 'Q2 2025', 
+      location: 'District Neemach, MP', 
+      client: 'MP Jal Nigam - Dilip Buildcon',
+      description: 'Multi-village water supply scheme automation'
+    },
+    { 
+      name: 'Beohari Multi-Village Scheme', 
+      value: '₹1.49 Crore', 
+      expectedCompletion: 'Q3 2025', 
+      location: 'Shahdol, MP', 
+      client: 'MP Jal Nigam - Tejas Construction',
+      description: 'Comprehensive village water management system'
+    },
+    { 
+      name: 'Rewa Bansagar Scheme', 
+      value: '₹14.24 Crore', 
+      expectedCompletion: 'Q4 2025', 
+      location: 'District Rewa, MP', 
+      client: 'MP Jal Nigam - Dilip Buildcon',
+      description: 'Large-scale water distribution automation'
+    },
+    { 
+      name: 'Pahargarh Multi-Village Scheme', 
+      value: '₹27.54 Lakh', 
+      expectedCompletion: 'Q1 2025', 
+      location: 'District Rajgarh, MP', 
+      client: 'MP Jal Nigam - KNK Projects',
+      description: 'Rural water supply automation project'
+    },
+    { 
+      name: 'Narmada Gabhir Multi-Village Scheme', 
+      value: '₹10.34 Crore', 
+      expectedCompletion: 'Q3 2025', 
+      location: 'District Ujjain, MP', 
+      client: 'MP Jal Nigam - Dilip Buildcon',
+      description: 'Advanced water management for multiple villages'
+    },
+    { 
+      name: 'Gohad Water Supply Scheme', 
+      value: '₹50.04 Lakh', 
+      expectedCompletion: 'Q2 2025', 
+      location: 'Madhya Pradesh', 
+      client: 'MPUDCL Bhopal - Shree Contractor',
+      description: 'Modern water supply system with full automation'
+    },
   ];
 
 
@@ -200,6 +340,9 @@ export default function ProjectsPage({ initialFilter = 'all' }: ProjectsPageProp
                       <div className="text-sm text-gray-600">
                         <span className="font-medium">Client:</span> {project.client}
                       </div>
+                      <div className="text-sm text-gray-700 bg-gray-50 p-3 rounded-lg">
+                        <span className="font-medium">Description:</span> {project.description}
+                      </div>
                     </div>
                   </motion.div>
                 ))}
@@ -248,11 +391,14 @@ export default function ProjectsPage({ initialFilter = 'all' }: ProjectsPageProp
                           {project.year}
                         </span>
                       </div>
-                      <div className="flex items-center justify-between text-sm">
+                      <div className="flex items-center justify-between text-sm mb-2">
                         <span className="text-gray-600">{project.location}</span>
                         <span className="text-[#0073bc] font-semibold">
                           {project.value}
                         </span>
+                      </div>
+                      <div className="text-xs text-gray-600 bg-blue-50 p-2 rounded">
+                        <span className="font-medium">Description:</span> {project.description}
                       </div>
                     </motion.div>
                   ))}
@@ -323,6 +469,9 @@ export default function ProjectsPage({ initialFilter = 'all' }: ProjectsPageProp
                         </div>
                         <div className="text-gray-600">
                           <span className="font-medium">Client:</span> {project.client}
+                        </div>
+                        <div className="text-sm text-gray-700 bg-orange-50 p-3 rounded-lg">
+                          <span className="font-medium">Description:</span> {project.description}
                         </div>
                       </div>
                     </div>
