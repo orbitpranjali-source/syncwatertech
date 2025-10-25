@@ -27,9 +27,17 @@ export default function HomePage({ onNavigate }: HomePageProps) {
 
   return (
     <div className="min-h-screen">
-      <section className="relative bg-gradient-to-br from-[#0073bc] via-[#005a94] to-[#004870] text-white overflow-hidden">
-        <div className="absolute inset-0 bg-black opacity-10"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
+      <section 
+        className="relative text-white overflow-hidden min-h-screen flex items-center"
+        style={{
+          backgroundImage: `url(${heroSection})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
+        <div className="absolute inset-0 bg-black opacity-40"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <div className="max-w-3xl lg:pr-10">
               <motion.h1
@@ -41,7 +49,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                 Water Tech for a Greener, Resilient and Sustainable Tomorrow
               </motion.h1>
               <motion.p
-                className="text-lg md:text-xl text-blue-100 mb-8 leading-relaxed"
+                className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed"
                 initial={{ opacity: 0.5, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.9, ease: 'easeOut', delay: 0.3 }}
@@ -58,14 +66,17 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               </div>
             </div>
             <div className="relative lg:pl-6">
-              <motion.img
-                src={heroSection}
-                alt="Water technology and infrastructure systems"
-                className="max-w-[900px] w-full h-auto object-cover rounded-2xl shadow-2xl ring-1 ring-white/20"
+              <motion.div
+                className="max-w-[900px] w-full h-auto rounded-2xl shadow-2xl ring-1 ring-white/20 bg-white/10 backdrop-blur-sm p-8"
                 initial={{ opacity: 0.5, x: 200 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 1, ease: 'easeInOut', delay: 0.2 }}
-              />
+              >
+                <h3 className="text-2xl font-bold text-white mb-4">Our Technology Solutions</h3>
+                <p className="text-white/90 text-lg leading-relaxed">
+                  Advanced water treatment systems, automation controls, and cloud-based monitoring solutions that ensure clean, sustainable water access for communities across India.
+                </p>
+              </motion.div>
             </div>
           </div>
         </div>
