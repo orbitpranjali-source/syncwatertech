@@ -1,7 +1,7 @@
 import { ArrowRight, Cpu, Cloud, Droplets, Settings, X } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import heroGirl from '../assets/hero-village-girl.jpg';
+import heroSection from '../assets/products/hero-section.jpg';
 import iconAutomationOfWaterSystems from '../assets/icon/Automation of Water Systems.png';
 import iconOnlineWorksManagement from '../assets/icon/Online Works Management System flaticon.png';
 import iconFusionTech from '../assets/icon/Fusion Tech.png';
@@ -42,9 +42,9 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               </motion.h1>
               <motion.p
                 className="text-lg md:text-xl text-blue-100 mb-8 leading-relaxed"
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0.5, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, ease: 'easeOut', delay: 0.3 }}
+                transition={{ duration: 0.9, ease: 'easeOut', delay: 0.3 }}
               >
                 Sync Water Tech Pvt Ltd propels water management beyond convention — harnessing cutting-edge process automation, SCADA, Industry 4.0, cloud technologies, and precision instrumentation to solve real-world water challenges in rural and urban India.
               </motion.p>
@@ -59,10 +59,10 @@ export default function HomePage({ onNavigate }: HomePageProps) {
             </div>
             <div className="relative lg:pl-6">
               <motion.img
-                src={heroGirl}
-                alt="Village girl drinking water from a tap"
-                className="w-full h-auto max-h-[520px] object-cover rounded-2xl shadow-2xl ring-1 ring-white/20"
-                initial={{ opacity: 0, x: 100 }}
+                src={heroSection}
+                alt="Water technology and infrastructure systems"
+                className="max-w-[900px] w-full h-auto object-cover rounded-2xl shadow-2xl ring-1 ring-white/20"
+                initial={{ opacity: 0.5, x: 200 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 1, ease: 'easeInOut', delay: 0.2 }}
               />
