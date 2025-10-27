@@ -1,7 +1,8 @@
 import { ArrowRight, Cpu, Cloud, Droplets, Settings, X } from 'lucide-react';
-import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { useState, useRef } from 'react';
 import heroGirl from '../assets/hero-village-girl.jpg';
+import villageProject2 from '../assets/village-project-2.jpg';
 import iconAutomationOfWaterSystems from '../assets/icon/Automation of Water Systems.png';
 import iconOnlineWorksManagement from '../assets/icon/Online Works Management System flaticon.png';
 import iconFusionTech from '../assets/icon/Fusion Tech.png';
@@ -12,6 +13,114 @@ import iconOMServices from '../assets/icon/O&M Services.png';
 
 interface HomePageProps {
   onNavigate: (page: string) => void;
+}
+
+// Centered Image Section Component with Scroll Animation
+function CenteredImageSection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  const imageVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      variants={imageVariants}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      className="flex justify-center items-center mb-16 py-8"
+    >
+      <img
+        src={villageProject2}
+        alt="Village water project showcasing sustainable water infrastructure"
+        className="w-full max-w-5xl h-auto rounded-2xl shadow-2xl ring-1 ring-gray-200 object-cover"
+      />
+    </motion.div>
+  );
+}
+
+// Dual Animation Section Component
+function DualAnimationSection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.1
+      }
+    }
+  };
+
+  const leftVariants = {
+    hidden: { opacity: 0, x: -80 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.9,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const rightVariants = {
+    hidden: { opacity: 0, x: 80 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.9,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  return (
+    <section className="py-20 bg-gradient-to-br from-white to-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          ref={ref}
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+        >
+          {/* Left Side - Text Content */}
+          <motion.div variants={leftVariants} className="space-y-6">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+              Innovative Tech to Drive Sustainable Water Management
+            </h2>
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#0073bc] leading-tight">
+              Leveraging advanced automation and cloud-based systems to revolutionize water infrastructure.
+            </h3>
+          </motion.div>
+
+          {/* Right Side - Image Content */}
+          <motion.div variants={rightVariants} className="flex justify-center items-center">
+            <img
+              src={villageProject2}
+              alt="Village water project showcasing sustainable water infrastructure"
+              className="w-full h-[400px] md:h-[500px] rounded-2xl shadow-[0_20px_60px_-15px_rgba(0,115,188,0.3)] object-cover ring-1 ring-blue-100"
+            />
+          </motion.div>
+        </motion.div>
+      </div>
+    </section>
+  );
 }
 
 export default function HomePage({ onNavigate }: HomePageProps) {
@@ -82,6 +191,9 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               Leveraging advanced automation and cloud-based systems to revolutionize water infrastructure
             </p>
           </div>
+
+          {/* Centered Image Section */}
+          <CenteredImageSection />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             <div className="group bg-white rounded-2xl shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-shadow">
@@ -187,7 +299,8 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         </div>
       </section>
 
-      
+      {/* Dual Animation Section */}
+      <DualAnimationSection />
 
       {showLearnMore && (
         <div className="fixed inset-0 z-50 flex items-end md:items-center justify-center bg-black/50" onClick={() => setShowLearnMore(false)}>
