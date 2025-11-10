@@ -1,6 +1,7 @@
 import { ArrowRight, Cpu, Cloud, Droplets, Settings, X } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import villageProject2 from '../assets/village-project-2.jpg';
 import heroSection from '../assets/products/hero-section.jpg';
 import iconAutomationOfWaterSystems from '../assets/icon/Automation of Water Systems.png';
 import iconOnlineWorksManagement from '../assets/icon/Online Works Management System flaticon.png';
@@ -40,22 +41,22 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <div className="max-w-3xl lg:pr-10">
-              <motion.h1
+              {/* <motion.h1
                 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, ease: 'easeOut', delay: 0 }}
               >
                 Water Tech for a Greener, Resilient and Sustainable Tomorrow
-              </motion.h1>
-              <motion.p
+              </motion.h1> */}
+              {/* <motion.p
                 className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed"
                 initial={{ opacity: 0.5, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.9, ease: 'easeOut', delay: 0.3 }}
               >
                 Sync Water Tech Pvt Ltd propels water management beyond convention — harnessing cutting-edge process automation, SCADA, Industry 4.0, cloud technologies, and precision instrumentation to solve real-world water challenges in rural and urban India.
-              </motion.p>
+              </motion.p> */}
               <div className="flex flex-col sm:flex-row gap-4">
                 <button
                   onClick={() => setShowLearnMore(true)}
@@ -83,76 +84,33 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent"></div>
       </section>
 
+      {/* Section 2: Image + text (moved here) */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Innovative Tech to Drive Sustainable Water Management
-            </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Leveraging advanced automation and cloud-based systems to revolutionize water infrastructure
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            <div className="group bg-white rounded-2xl shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-shadow">
-              <div className="icon-wrap mb-6">
-                <img src={iconAutomationOfWaterSystems} alt="Automation of Water Systems icon" className="icon-img icon-hover" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">
-                Automation of Water Systems
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                Advanced PLC-based automation for water treatment plants, pumping stations, and distribution networks with real-time monitoring and control.
+          <motion.div
+            className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9 }}
+          >
+            <div className="space-y-6 -ml-4 sm:-ml-6 lg:-ml-8">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                Innovative Tech to Drive Sustainable Water Management
+              </h2>
+              <p className="text-lg text-gray-600 max-w-3xl">
+                Leveraging advanced automation and cloud-based systems to revolutionize water infrastructure.
               </p>
             </div>
 
-            <div className="group bg-white rounded-2xl shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-shadow">
-              <div className="icon-wrap mb-6">
-                <img src={iconOnlineWorksManagement} alt="Online Works Management System icon" className="icon-img icon-hover" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">
-                Online Works Management System
-              </h3>
-              <ul className="text-gray-600 space-y-2">
-                <li className="flex items-start">
-                  <span className="text-[#0073bc] mr-2">•</span>
-                  <span>Real-time project tracking and reporting</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-[#0073bc] mr-2">•</span>
-                  <span>Resource allocation and scheduling</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-[#0073bc] mr-2">•</span>
-                  <span>Performance analytics and insights</span>
-                </li>
-              </ul>
+            <div className="flex justify-center items-center">
+              <img
+                src={villageProject2}
+                alt="Village water project showcasing sustainable water infrastructure"
+                className="w-full max-w-3xl h-[480px] md:h-[640px] rounded-2xl shadow-[0_30px_80px_-20px_rgba(0,115,188,0.25)] object-cover ring-1 ring-blue-100"
+                style={{ width: '100%', height: 'auto', objectPosition: 'center' }}
+              />
             </div>
-
-            <div className="group bg-white rounded-2xl shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-shadow">
-              <div className="icon-wrap mb-6">
-                <img src={iconFusionTech} alt="Fusion Tech icon" className="icon-img icon-hover" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">
-                Fusion Tech
-              </h3>
-              <ul className="text-gray-600 space-y-2">
-                <li className="flex items-start">
-                  <span className="text-[#0073bc] mr-2">•</span>
-                  <span>Integrated IoT sensors for water quality</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-[#0073bc] mr-2">•</span>
-                  <span>Predictive maintenance algorithms</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-[#0073bc] mr-2">•</span>
-                  <span>Energy-efficient operation optimization</span>
-                </li>
-              </ul>
-            </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 

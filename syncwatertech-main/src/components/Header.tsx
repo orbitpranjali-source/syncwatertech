@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
-import logo2 from '../assets/logo-2.png';
+import logo2 from '/src/assets/logo-2.png';
 
 interface HeaderProps {
   onNavigate: (page: string) => void;
@@ -18,7 +18,8 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
     { label: 'Projects', page: 'projects' },
     { label: 'About', page: 'about' },
     { label: 'Services', page: 'services' },
-    { label: 'FAQ', page: 'faq' },
+    { label: 'Partners', page: 'clients' },
+    { label: 'Solution', page: 'faq' },
     { label: 'Team', page: 'team' },
     { label: 'Contact', page: 'contact' },
   ];
@@ -54,20 +55,26 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
             onClick={() => onNavigate('home')}
             aria-label="Go to home"
           >
-            <img src={logo2} alt="Sync Water Tech Logo" className="h-10 w-auto mr-3 transition-transform duration-300 group-hover:scale-105" />
+            <img src={logo2} alt="Sync Water Tech Logo" className="h-10 w-auto mr-3 transition-transform duration-300 group-hover:scale-105 opacity-100 z-[60]" />
             <span className="text-3xl font-bold tracking-tight text-[#0073bc]">SyncWaterTech</span>
           </button>
 
           {/* Modern Pill-Style Navigation */}
           <nav className="hidden lg:flex items-center">
             <div className="flex items-center bg-gray-50/80 backdrop-blur-sm rounded-full px-2 py-2 shadow-sm border border-gray-100/50">
-              {navItems.slice(0, 4).map((item) => {
+              {navItems.slice(0, 5).map((item) => {
                 const isActive = currentPage === item.page;
                 
                 return (
                   <button
                     key={item.page}
-                    onClick={() => onNavigate(item.page)}
+                    onClick={() => {
+                      onNavigate(item.page);
+                      if (item.page === 'clients') {
+                        // update URL to /clients so react-router route matches
+                        window.history.pushState({}, '', '/clients');
+                      }
+                    }}
                     className={`relative px-6 py-3 mx-1 rounded-full text-sm font-medium transition-all duration-300 ease-in-out transform ${
                       isActive
                         ? 'bg-[#005B9A] text-white shadow-lg scale-105'
@@ -141,13 +148,18 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
                 )}
               </div>
 
-              {navItems.slice(4).map((item) => {
+              {navItems.slice(5).map((item) => {
                 const isActive = currentPage === item.page;
                 
                 return (
                   <button
                     key={item.page}
-                    onClick={() => onNavigate(item.page)}
+                    onClick={() => {
+                      onNavigate(item.page);
+                      if (item.page === 'clients') {
+                        window.history.pushState({}, '', '/clients');
+                      }
+                    }}
                     className={`relative px-6 py-3 mx-1 rounded-full text-sm font-medium transition-all duration-300 ease-in-out transform ${
                       isActive
                         ? 'bg-[#005B9A] text-white shadow-lg scale-105'
@@ -181,7 +193,7 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
       {mobileMenuOpen && (
         <div className="lg:hidden bg-white border-t">
           <div className="px-4 py-4 space-y-2">
-            {navItems.slice(0, 4).map((item) => {
+            {navItems.slice(0, 5).map((item) => {
               const isActive = currentPage === item.page;
               
               return (
@@ -190,6 +202,9 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
                   onClick={() => {
                     onNavigate(item.page);
                     setMobileMenuOpen(false);
+                    if (item.page === 'clients') {
+                      window.history.pushState({}, '', '/clients');
+                    }
                   }}
                   className={`block w-full text-left px-4 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
                     isActive
@@ -251,7 +266,7 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
               )}
             </div>
 
-            {navItems.slice(4).map((item) => {
+            {navItems.slice(5).map((item) => {
               const isActive = currentPage === item.page;
               
               return (
@@ -260,6 +275,9 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
                   onClick={() => {
                     onNavigate(item.page);
                     setMobileMenuOpen(false);
+                    if (item.page === 'clients') {
+                      window.history.pushState({}, '', '/clients');
+                    }
                   }}
                   className={`block w-full text-left px-4 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
                     isActive

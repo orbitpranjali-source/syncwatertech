@@ -6,7 +6,8 @@ import iconCommunity from '../assets/icon/Community Focus.png';
 import iconEndToEnd from '../assets/icon/End-to-End Solutions.png';
 import iconResults from '../assets/icon/Results Oriented.png';
 import subHeadingImage from '../assets/products/sub-heading.jpg';
-const heroWaterImage = new URL('../assets/products/hero-section.jpg', import.meta.url).href;
+import HeroSection from '../components/HeroSection';
+import { MotionFadeUp, MotionStagger, AnimatedHeading } from '../components/Animated';
 
 export default function AboutPage() {
   const whyChooseUs = [
@@ -44,28 +45,15 @@ export default function AboutPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <section className="relative text-white py-20">
-        <img src={heroWaterImage} alt="Water technology background" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              About Sync Water Tech
-            </h1>
-            <p className="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto">
-              Pioneering water innovation for sustainable communities
-            </p>
-          </div>
-        </div>
-      </section>
+      <HeroSection title="About Sync Water Tech" subtitle="Pioneering water innovation for sustainable communities" />
 
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              <AnimatedHeading level={2} className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
                 Pioneering Water Innovation for a Sustainable Future
-              </h2>
+              </AnimatedHeading>
               <div className="space-y-4 text-gray-700 leading-relaxed">
                 <p>
                   Sync Water Tech Pvt Ltd is at the forefront of transforming India's water infrastructure through innovative technology and sustainable practices. Since our inception, we have been committed to addressing the nation's water challenges with intelligent, scalable solutions.
@@ -85,11 +73,11 @@ export default function AboutPage() {
               <img src={subHeadingImage} alt="Mission and Vision background" className="absolute inset-0 w-full h-full object-cover" />
               <div className="absolute inset-0 bg-black/40" />
               <div className="relative z-10 p-8">
-                <h3 className="text-2xl font-bold mb-6">Our Mission</h3>
+                <AnimatedHeading level={3} className="text-2xl font-bold mb-6">Our Mission</AnimatedHeading>
                 <p className="text-blue-100 mb-8 leading-relaxed">
                   To provide innovative, sustainable, and accessible water management solutions that empower communities, protect natural resources, and build a resilient future for all.
                 </p>
-                <h3 className="text-2xl font-bold mb-6">Our Vision</h3>
+                <AnimatedHeading level={3} className="text-2xl font-bold mb-6">Our Vision</AnimatedHeading>
                 <p className="text-blue-100 leading-relaxed">
                   To be India's most trusted partner in water infrastructure, recognized for technological excellence, environmental responsibility, and unwavering commitment to community welfare.
                 </p>
@@ -102,20 +90,17 @@ export default function AboutPage() {
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <AnimatedHeading level={2} className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Why Sync WaterTech Stands Apart
-            </h2>
+            </AnimatedHeading>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Our unique combination of expertise, innovation, and commitment sets us apart
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <MotionStagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" stagger={0.05}>
             {whyChooseUs.map((item, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-xl shadow-md p-8 hover:shadow-lg transition-shadow"
-              >
+              <MotionFadeUp key={index} className="bg-white rounded-xl shadow-md p-8 hover:shadow-lg transition-shadow">
                 <div className="mb-6">
                   <img src={item.image} alt={`${item.title} icon`} className="h-16 w-16 object-contain mx-auto" />
                 </div>
@@ -125,9 +110,9 @@ export default function AboutPage() {
                 <p className="text-gray-600 leading-relaxed">
                   {item.description}
                 </p>
-              </div>
+              </MotionFadeUp>
             ))}
-          </div>
+          </MotionStagger>
         </div>
       </section>
 

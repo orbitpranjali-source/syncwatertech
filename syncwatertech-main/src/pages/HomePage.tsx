@@ -1,11 +1,10 @@
 import { ArrowRight, Cpu, Cloud, Droplets, Settings, X } from 'lucide-react';
 import { motion, useInView } from 'framer-motion';
+import { MotionFadeUp, MotionStagger, AnimatedHeading } from '../components/Animated';
 import { useState, useRef } from 'react';
 import heroGirl from '../assets/hero-village-girl.jpg';
+import heroBg from '../assets/products/hero-bg.jpg';
 import villageProject2 from '../assets/village-project-2.jpg';
-import iconAutomationOfWaterSystems from '../assets/icon/Automation of Water Systems.png';
-import iconOnlineWorksManagement from '../assets/icon/Online Works Management System flaticon.png';
-import iconFusionTech from '../assets/icon/Fusion Tech.png';
 import iconWaterTreatmentPlants from '../assets/icon/Water Treatment Plants.png';
 import iconAutomationSystems from '../assets/icon/Automation Systems.png';
 import iconCloudManagement from '../assets/icon/Cloud Management.png';
@@ -15,39 +14,7 @@ interface HomePageProps {
   onNavigate: (page: string) => void;
 }
 
-// Centered Image Section Component with Scroll Animation
-function CenteredImageSection() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  const imageVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 1,
-        ease: "easeOut"
-      }
-    }
-  };
-
-  return (
-    <motion.div
-      ref={ref}
-      variants={imageVariants}
-      initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
-      className="flex justify-center items-center mb-16 py-8"
-    >
-      <img
-        src={villageProject2}
-        alt="Village water project showcasing sustainable water infrastructure"
-        className="w-full max-w-5xl h-auto rounded-2xl shadow-2xl ring-1 ring-gray-200 object-cover"
-      />
-    </motion.div>
-  );
-}
+// (CenteredImageSection removed — replaced by DualAnimationSection in Section 2)
 
 // Dual Animation Section Component
 function DualAnimationSection() {
@@ -71,8 +38,7 @@ function DualAnimationSection() {
       opacity: 1,
       x: 0,
       transition: {
-        duration: 0.9,
-        ease: "easeOut"
+        duration: 0.9
       }
     }
   };
@@ -83,8 +49,7 @@ function DualAnimationSection() {
       opacity: 1,
       x: 0,
       transition: {
-        duration: 0.9,
-        ease: "easeOut"
+        duration: 0.9
       }
     }
   };
@@ -136,8 +101,16 @@ export default function HomePage({ onNavigate }: HomePageProps) {
 
   return (
     <div className="min-h-screen">
-      <section className="relative bg-gradient-to-br from-[#0073bc] via-[#005a94] to-[#004870] text-white overflow-hidden">
-        <div className="absolute inset-0 bg-black opacity-10"></div>
+      <section
+        className="relative text-white overflow-hidden"
+        style={{
+          backgroundImage: `url(${heroBg})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        {/* subtle overlay so white text remains readable but image stays visible */}
+        <div className="absolute inset-0 bg-black/20" aria-hidden="true" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <div className="max-w-3xl lg:pr-10">
@@ -178,102 +151,24 @@ export default function HomePage({ onNavigate }: HomePageProps) {
             </div>
           </div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent"></div>
+        {/* removed bottom white fade so background image remains fully visible */}
       </section>
 
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Innovative Tech to Drive Sustainable Water Management
-            </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Leveraging advanced automation and cloud-based systems to revolutionize water infrastructure
-            </p>
-          </div>
-
-          {/* Centered Image Section */}
-          <CenteredImageSection />
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            <div className="group bg-white rounded-2xl shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-shadow">
-              <div className="icon-wrap mb-6">
-                <img src={iconAutomationOfWaterSystems} alt="Automation of Water Systems icon" className="icon-img icon-hover" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">
-                Automation of Water Systems
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                Advanced PLC-based automation for water treatment plants, pumping stations, and distribution networks with real-time monitoring and control.
-              </p>
-            </div>
-
-            <div className="group bg-white rounded-2xl shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-shadow">
-              <div className="icon-wrap mb-6">
-                <img src={iconOnlineWorksManagement} alt="Online Works Management System icon" className="icon-img icon-hover" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">
-                Online Works Management System
-              </h3>
-              <ul className="text-gray-600 space-y-2">
-                <li className="flex items-start">
-                  <span className="text-[#0073bc] mr-2">•</span>
-                  <span>Real-time project tracking and reporting</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-[#0073bc] mr-2">•</span>
-                  <span>Resource allocation and scheduling</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-[#0073bc] mr-2">•</span>
-                  <span>Performance analytics and insights</span>
-                </li>
-              </ul>
-            </div>
-
-            <div className="group bg-white rounded-2xl shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-shadow">
-              <div className="icon-wrap mb-6">
-                <img src={iconFusionTech} alt="Fusion Tech icon" className="icon-img icon-hover" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">
-                Fusion Tech
-              </h3>
-              <ul className="text-gray-600 space-y-2">
-                <li className="flex items-start">
-                  <span className="text-[#0073bc] mr-2">•</span>
-                  <span>Integrated IoT sensors for water quality</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-[#0073bc] mr-2">•</span>
-                  <span>Predictive maintenance algorithms</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-[#0073bc] mr-2">•</span>
-                  <span>Energy-efficient operation optimization</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Section 2: moved DualAnimationSection into this position */}
+      <DualAnimationSection />
 
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Our Expertise
-            </h2>
+            <AnimatedHeading level={2} className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Expertise</AnimatedHeading>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               Comprehensive water infrastructure solutions tailored to your needs
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <MotionStagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" stagger={0.05}>
             {services.map((service, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow"
-              >
+              <MotionFadeUp key={index} className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow">
                 {service.image ? (
                   <img src={service.image} alt={`${service.title} icon`} className="h-12 w-12 object-contain mb-4 mx-auto" />
                 ) : (
@@ -283,9 +178,9 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                   {service.title}
                 </h3>
                 <p className="text-gray-600 text-sm">{service.desc}</p>
-              </div>
+              </MotionFadeUp>
             ))}
-          </div>
+          </MotionStagger>
 
           <div className="mt-12 text-center">
             <button
@@ -299,8 +194,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         </div>
       </section>
 
-      {/* Dual Animation Section */}
-      <DualAnimationSection />
+  {/* Dual Animation Section removed from here (moved to Section 2) */}
 
       {showLearnMore && (
         <div className="fixed inset-0 z-50 flex items-end md:items-center justify-center bg-black/50" onClick={() => setShowLearnMore(false)}>

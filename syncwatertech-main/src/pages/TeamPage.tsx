@@ -1,11 +1,18 @@
+import { useState } from 'react';
 import { Mail, Briefcase, Target } from 'lucide-react';
 import subHeadingImage from '../assets/products/sub-heading.jpg';
-import heroWaterImage from '../assets/products/hero-section.jpg';
-import ourTeamIcon from '../assets/icon/Our Team.png';
+import HeroSection from '../components/HeroSection';
+import { MotionFadeUp, MotionStagger, MotionFadeScale, AnimatedHeading } from '../components/Animated';
+import teamIcon from '../assets/icon/Our Team.png';
 import rohitImg from '../assets/team/rohit-arora-2.jpg';
 import vijayImg from '../assets/team/vijay-tiwari-2.jpg';
+import ApplicationModal from '../components/ApplicationModal';
+import officeFounder from '../assets/sync-water-tech-new-office-founder-cabin.jpg';
+import officeReception from '../assets/sync-water-tech-new-office-reception.jpg';
 
 export default function TeamPage() {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedPosition, setSelectedPosition] = useState<string | undefined>(undefined);
   const team = [
     {
       name: 'Rohit Arora',
@@ -52,44 +59,32 @@ export default function TeamPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <section className="relative text-white py-20">
-        <img src={heroWaterImage} alt="Water technology background" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <img src={ourTeamIcon} alt="Our Team icon" className="h-20 w-20 mx-auto mb-6 opacity-90 object-contain" />
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Our Team
-            </h1>
-            <p className="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto">
-              Meet the visionaries driving water innovation
-            </p>
-          </div>
-        </div>
-      </section>
+      <HeroSection 
+        title="Our Team" 
+        subtitle="Meet the visionaries driving water innovation"
+        icon={teamIcon}
+      />
 
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <AnimatedHeading level={2} className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Meet the Visionaries
-            </h2>
+            </AnimatedHeading>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Our leadership team brings decades of combined experience in water technology and infrastructure
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <MotionStagger className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto" stagger={0.06}>
             {team.map((member, index) => (
-              <div
-                key={index}
-                className="bg-gray-50 rounded-2xl shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-shadow"
-              >
+              <MotionFadeUp key={index} className="bg-gray-50 rounded-2xl shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-shadow">
                 {member.photo ? (
                   <img
                     src={member.photo}
                     alt={`${member.name} photo`}
-                    className="w-28 h-28 rounded-full object-cover mx-auto mb-6 ring-4 ring-[#0073bc]/10 shadow-sm"
+                    className="w-48 h-48 rounded-2xl object-cover mx-auto mb-6 ring-4 ring-[#0073bc]/10 shadow-lg 
+                             transition-all duration-300 hover:scale-105 hover:shadow-xl"
                     loading="lazy"
                   />
                 ) : (
@@ -117,9 +112,9 @@ export default function TeamPage() {
                     {member.email}
                   </a>
                 </div>
-              </div>
+              </MotionFadeUp>
             ))}
-          </div>
+          </MotionStagger>
         </div>
       </section>
 
@@ -207,7 +202,13 @@ export default function TeamPage() {
                     <p><span className="font-medium">Location:</span> {position.location}</p>
                     <p><span className="font-medium">Type:</span> {position.type}</p>
                   </div>
-                  <button className="w-full py-2.5 bg-[#0073bc] text-white rounded-lg font-medium hover:bg-[#005a94] transition-colors">
+                  <button
+                    onClick={() => {
+                      setSelectedPosition(position.title);
+                      setModalOpen(true);
+                    }}
+                    className="w-full py-2.5 bg-[#0073bc] text-white rounded-lg font-medium hover:bg-[#005a94] transition-colors"
+                  >
                     Apply Now
                   </button>
                 </div>
@@ -216,6 +217,43 @@ export default function TeamPage() {
           </div>
         </div>
       </section>
+
+  {/* Our Office section inserted below Join Our Team */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-6">
+            <AnimatedHeading level={2} className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
+              Our Office
+            </AnimatedHeading>
+            <MotionFadeUp>
+              <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+                Modern, inspiring, and built for excellence.
+              </p>
+            </MotionFadeUp>
+          </div>
+
+          <MotionStagger className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch" stagger={0.06}>
+            <MotionFadeScale className="overflow-hidden rounded-2xl" whileHover={{ scale: 1.02 }} transition={{ duration: 0.4 }}>
+              <img
+                src={officeFounder}
+                alt="Founder cabin at Sync Water Tech office"
+                loading="lazy"
+                className="w-full h-[480px] md:h-[640px] object-contain rounded-2xl bg-gray-50"
+              />
+            </MotionFadeScale>
+
+            <MotionFadeScale className="overflow-hidden rounded-2xl" whileHover={{ scale: 1.02 }} transition={{ duration: 0.4 }}>
+              <img
+                src={officeReception}
+                alt="Reception area at Sync Water Tech office"
+                loading="lazy"
+                className="w-full h-[480px] md:h-[640px] object-contain rounded-2xl bg-gray-50"
+              />
+            </MotionFadeScale>
+          </MotionStagger>
+        </div>
+      </section>
+  <ApplicationModal open={modalOpen} onClose={() => setModalOpen(false)} position={selectedPosition} />
 
       <section className="relative text-white py-16">
         <img src={subHeadingImage} alt="Careers background" className="absolute inset-0 w-full h-full object-cover" />

@@ -1,6 +1,6 @@
 import { Droplets, Zap, Gauge, ThermometerSun, Activity, FlaskConical } from 'lucide-react';
-import heroWaterImage from '../assets/products/hero-section.jpg';
 import subHeadingImage from '../assets/products/sub-heading.jpg';
+import heroWaterImage from '../assets/products/hero-section.jpg';
 import { buildProductsData, type ProductGroup } from '../data/products';
 import { RAW_SUB_PRODUCTS } from '../data/rawProducts';
 import iconProductsSolutions from '../assets/icon/Products & Solutions.png';
@@ -183,7 +183,8 @@ export default function ProductsPage({ onNavigate }: ProductsPageProps) {
       </section>
 
       {/* Subproducts Grid */}
-      <section className="py-20 bg-gray-50">
+
+  <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {groups.map((group, gIdx) => (
             <div key={gIdx} className="mb-16">
@@ -317,19 +318,7 @@ export default function ProductsPage({ onNavigate }: ProductsPageProps) {
         </div>
       </section>
 
-      <section className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            Need a Custom Solution?
-          </h2>
-          <p className="text-lg text-gray-600 mb-8">
-            Our engineering team can design and build products tailored to your specific requirements
-          </p>
-          <button className="px-8 py-3 bg-[#0073bc] text-white rounded-full font-semibold hover:bg-[#005a94] transition-colors">
-            Request Product Information
-          </button>
-        </div>
-      </section>
+      
     </div>
   );
 }

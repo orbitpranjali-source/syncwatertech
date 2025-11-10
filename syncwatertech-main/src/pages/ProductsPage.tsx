@@ -1,7 +1,8 @@
 import { Droplets, Zap, Gauge, ThermometerSun, Activity, FlaskConical } from 'lucide-react';
-import heroWaterImage from '../assets/products/hero-section.jpg';
+import HeroSection from '../components/HeroSection';
 import subHeadingImage from '../assets/products/sub-heading.jpg';
-import iconProductsSolutions from '../assets/icon/Products & Solutions.png';
+import { MotionFadeUp, MotionStagger } from '../components/Animated';
+// iconProductsSolutions removed; hero uses shared HeroSection
 import iconWTP from '../assets/icon/Water Treatment Plants.png';
 import iconSTP from '../assets/icon/Sewage Treatment Plants.png';
 import iconRO from '../assets/icon/Reverse Osmosis Systems.png';
@@ -17,6 +18,8 @@ interface ProductsPageProps {
 
 
 export default function ProductsPage({ onNavigate }: ProductsPageProps) {
+  // mark prop as used to satisfy TypeScript when parent passes navigation handler
+  void onNavigate;
   const productCategories = [
     {
       icon: Droplets,
@@ -101,40 +104,13 @@ export default function ProductsPage({ onNavigate }: ProductsPageProps) {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <section className="relative text-white py-20">
-        <img
-          src={heroWaterImage}
-          alt="Digital water management and monitoring"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative z-10">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center">
-              {iconProductsSolutions ? (
-                <img src={iconProductsSolutions} alt="Products & Solutions icon" className="icon-img mx-auto mb-6" />
-              ) : (
-              <Droplets className="h-16 w-16 mx-auto mb-6 opacity-90" />
-              )}
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">
-                🧪 Products & Solutions
-              </h1>
-              <p className="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto">
-                Advanced water treatment technologies and automation systems
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <HeroSection title="Products & Solutions" subtitle="Advanced water treatment technologies and automation systems" />
 
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <MotionStagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" stagger={0.05}>
             {productCategories.map((category, index) => (
-              <div
-                key={index}
-                className="group bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 p-8 border border-gray-100 hover:border-[#0073bc]/20 transform hover:-translate-y-1"
-              >
+              <MotionFadeUp key={index} className="group bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 p-8 border border-gray-100 hover:border-[#0073bc]/20 transform hover:-translate-y-1">
                 <div className="icon-wrap mb-6 mx-auto group-hover:bg-[#0073bc]/10 transition-colors duration-300">
                   {category.image ? (
                     <img src={category.image} alt={`${category.title} icon`} className="icon-img icon-hover group-hover:scale-110 transition-transform duration-300" />
@@ -142,6 +118,7 @@ export default function ProductsPage({ onNavigate }: ProductsPageProps) {
                     <category.icon className="h-10 w-10 text-[#0073bc] mx-auto group-hover:scale-110 transition-transform duration-300" />
                   )}
                 </div>
+
                 <h3 className="text-xl font-bold text-gray-900 mb-3">
                   {category.title === 'Water Treatment Plants' && '🚰 '}
                   {category.title === 'Sewage Treatment Plants' && '🧼 '}
@@ -162,9 +139,9 @@ export default function ProductsPage({ onNavigate }: ProductsPageProps) {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </MotionFadeUp>
             ))}
-          </div>
+          </MotionStagger>
         </div>
       </section>
 
@@ -243,9 +220,7 @@ export default function ProductsPage({ onNavigate }: ProductsPageProps) {
           <p className="text-lg text-gray-600 mb-8">
             Our engineering team can design and build products tailored to your specific requirements
           </p>
-          <button onClick={() => onNavigate && onNavigate('product-info')} className="px-8 py-3 bg-[#0073bc] text-white rounded-full font-semibold hover:bg-[#005a94] transition-colors">
-            Request Product Information
-          </button>
+          
         </div>
       </section>
     </div>

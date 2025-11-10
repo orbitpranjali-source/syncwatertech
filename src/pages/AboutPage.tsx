@@ -6,7 +6,7 @@ import iconCommunity from '../assets/icon/Community Focus.png';
 import iconEndToEnd from '../assets/icon/End-to-End Solutions.png';
 import iconResults from '../assets/icon/Results Oriented.png';
 import subHeadingImage from '../assets/products/sub-heading.jpg';
-const heroWaterImage = new URL('../assets/products/hero-section.jpg', import.meta.url).href;
+import HeroSection from '../components/HeroSection';
 
 export default function AboutPage() {
   const whyChooseUs = [
@@ -44,20 +44,8 @@ export default function AboutPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <section className="relative text-white py-20">
-        <img src={heroWaterImage} alt="Water technology background" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              About Sync Water Tech
-            </h1>
-            <p className="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto">
-              Pioneering water innovation for sustainable communities
-            </p>
-          </div>
-        </div>
-      </section>
+      {/* Use shared HeroSection so hero image is consistent */}
+      <HeroSection title="About Sync Water Tech" subtitle="Pioneering water innovation for sustainable communities" />
 
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

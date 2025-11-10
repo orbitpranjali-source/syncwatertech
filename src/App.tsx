@@ -9,6 +9,7 @@ import ProductsPage from './pages/ProductsPage';
 import FAQPage from './pages/FAQPage';
 import TeamPage from './pages/TeamPage';
 import ContactPage from './pages/ContactPage';
+import ClientsPage from './pages/ClientsPage';
 import ProductDetailPage from './pages/ProductDetailPage';
 import { useMemo } from 'react';
 import { buildProductsData, flattenProducts, type ProductItem, type RawGroup } from './data/products';
@@ -26,6 +27,7 @@ type PageType =
   | 'faq'
   | 'team'
   | 'contact'
+  | 'clients'
   | `product:${string}`;
 
 function App() {
@@ -112,6 +114,8 @@ function App() {
         return <ServicesPage />;
       case 'products':
         return <ProductsPage onNavigate={handleNavigate} />;
+      case 'clients':
+        return <ClientsPage />;
       case 'faq':
         return <FAQPage onNavigate={handleNavigate} />;
       case 'team':

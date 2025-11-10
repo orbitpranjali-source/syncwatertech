@@ -1,13 +1,13 @@
 import { Droplets, Settings, FileText, Wrench, Cloud, Cpu } from 'lucide-react';
 import subHeadingImage from '../assets/products/sub-heading.jpg';
-import heroWaterImage from '../assets/products/hero-section.jpg';
+import HeroSection from '../components/HeroSection';
+import { MotionFadeUp, MotionStagger } from '../components/Animated';
 import iconWaterTreatmentPlants from '../assets/icon/Water Treatment Plants.png';
 import iconAutomationSystems from '../assets/icon/Automation Systems.png';
 import iconOMServices from '../assets/icon/O&M Services.png';
 import iconCloudManagement from '../assets/icon/Cloud Management.png';
 import iconInstallationCommissioning from '../assets/icon/Installation & Commissioning.png';
 import iconConsultancyDesign from '../assets/icon/Consultancy & Design.png';
-import iconOurServices from '../assets/icon/Our Services.png';
 
 interface ServicesPageProps {
   onNavigate?: (page: string) => void;
@@ -102,34 +102,13 @@ export default function ServicesPage({ onNavigate }: ServicesPageProps) {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <section className="relative text-white py-20">
-        <img src={heroWaterImage} alt="Water technology background" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative z-10">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center">
-              {iconOurServices ? (
-                <img src={iconOurServices} alt="Our Services icon" className="h-16 w-16 md:h-20 md:w-20 object-contain mx-auto mb-6" />
-              ) : (
-                <Settings className="h-16 w-16 mx-auto mb-6 opacity-90" />
-              )}
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Services</h1>
-              <p className="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto">
-                Comprehensive water infrastructure solutions from concept to maintenance
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <HeroSection title="Our Services" subtitle="Comprehensive water infrastructure solutions from concept to maintenance" />
 
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <MotionStagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" stagger={0.05}>
             {services.map((service, index) => (
-              <div
-                key={index}
-                className="group bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition-shadow border border-gray-100"
-              >
+              <MotionFadeUp key={index} className="group bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition-shadow border border-gray-100">
                 <div className="icon-wrap mb-6 mx-auto">
                   {service.image ? (
                     <img src={service.image} alt={`${service.title} icon`} className="icon-img icon-hover" />
@@ -148,9 +127,9 @@ export default function ServicesPage({ onNavigate }: ServicesPageProps) {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </MotionFadeUp>
             ))}
-          </div>
+          </MotionStagger>
         </div>
       </section>
 
